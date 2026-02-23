@@ -2,3 +2,22 @@
   margin: 0;
   padding: 0;
 }
+
+.Categories_cards {
+  display: grid; /* styler layoutet for boksen */
+  grid-template-columns: 1fr 1fr 1fr; /* 3 kolonner */
+  gap: 20px; /* afstand vandret og lodret */
+  max-width: 1100px;
+}
+
+.category_list_container {
+  background-color: grey;
+  color: white;
+  height: 80px; /* boksens højde */
+  border-radius: 4px; /* runde kanter op boksen */
+  display: flex; /* centerer teksten i boksen */
+  align-items: center; /* centerer teksten lodret */
+  justify-content: center; /* centerer teksten vandret */
+  font-size: 16px;
+  text-decoration: none; /* fjerner streg under tekst */
+}
