@@ -38,7 +38,7 @@ main > h2 {
   font-weight: 700;
 }
 
-.Categories_cards {
+.categories_cards {
   display: grid; /* styler layoutet for boksen */
   grid-template-columns: 1fr 1fr 1fr; /* 3 kolonner */
   gap: 30px; /* afstand vandret og lodret */
