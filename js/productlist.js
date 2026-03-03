@@ -16,7 +16,7 @@ function showData(json) {
   json.forEach((element) => {
     console.log(element);
     markup += ` <a href="product.html?fisk=${element.id}">
-        <article class="smallProduct onSale soldOut">
+        <article class="smallProduct ${element.soldout ? "onSale soldOut" : ""}">
           <img
             src="https://kea-alt-del.dk/t7/images/webp/640/${element.id}.webp"
             alt="product image"
@@ -25,8 +25,8 @@ function showData(json) {
           <p class="product_brand">Tshirts | Nike</p>
           <p class="price">DKK <span>1299</span>,-</p>
           <div class="discounted">
-            <p>Now DKK <span>${element.price}</span>,-</p>
-            <p><span>25</span>%</p>
+            ${element.discount ? `<p>Now DKK <span>${element.price}</span>,-</p>` : ""}
+           ${element.discount ? `<p><span>25</span>%</p>` : ""} 
           </div>
         </article>
       </a>`;
