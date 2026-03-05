@@ -254,6 +254,26 @@ body > a[href="productlist.html"] {
   border-radius: 10px; /* runde hjørner */
 }
 
+/* FILTER KNAP - ALL, UNISEX, MEN, WOMEN */
+#filter-knap button {
+  padding: 10px 18px; /* størrelse */
+  font-weight: 600;
+
+  background: #c4f3f6;
+  border: 0; /* fjerner kant*/
+  border-radius: 10px; /* runde hjørner */
+  margin-bottom: 10px;
+}
+#sorter-knap button {
+  padding: 10px 18px; /* størrelse */
+  font-weight: 600;
+
+  background: #c4f3f6;
+  border: 0; /* fjerner kant*/
+  border-radius: 10px; /* runde hjørner */
+  margin-bottom: 10px;
+}
+
 /* RESPONTIVT */
 /* TABLET OG MOBIL */
 @media (max-width: 900px) {
