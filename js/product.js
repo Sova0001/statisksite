@@ -10,7 +10,7 @@ function getData() {
     .then((res) => res.json())
     .then(showData);
 }
-
+//
 function showData(json) {
   console.log(json);
   container.innerHTML = `
