@@ -17,7 +17,7 @@ function showData(json) {
   let markup = "";
 
   json.forEach((element) => {
-    console.log(element);
+    // console.log(element);
     markup += ` <a href="product.html?fisk=${element.id}">
         <article class="smallProduct ${element.soldout ? "onSale soldOut" : ""}">
           <img
@@ -26,7 +26,7 @@ function showData(json) {
           />
           <h3>${element.productdisplayname}</h3>
           <p class="product_brand">Tshirts | Nike</p>
-          <p class="price">DKK <span>1299</span>,-</p>
+          <p class="price">DKK <span>${element.price}</span>,-</p>
           <div class="discounted">
             ${element.discount ? `<p>Now DKK <span>${element.price}</span>,-</p>` : ""}
            ${element.discount ? `<p><span>25</span>%</p>` : ""} 
@@ -39,8 +39,9 @@ function showData(json) {
 
 getData();
 
+//filter knapper
 document
-  .querySelectorAll("button")
+  .querySelectorAll("#filter-knap button")
   .forEach((knap) => knap.addEventListener("click", filter));
 
 let allData;
@@ -50,18 +51,49 @@ function getData() {
     .then((response) => response.json())
     .then((data) => {
       allData = data;
-      showData(allData);
+      showData(allData); //vis alle produkter
     });
 }
 
 function filter(e) {
+  //   console.log("nu kører filter");
   const valgt = e.target.textContent;
   if (valgt === "All") {
-    console.log(allData);
+    // console.log(allData);
     showData(allData);
   } else {
     const udsnit = allData.filter((element) => element.gender == valgt);
-    console.log(udsnit);
+    // console.log(udsnit);
     showData(udsnit);
   }
+}
+
+//sorter knapper
+document
+  .querySelectorAll("#sorter-knap button")
+  .forEach((knap) => knap.addEventListener("click", sorter));
+
+function sorter(event) {
+  //   console.log(event.target.dataset.price, allData);
+
+  if (event.target.dataset.price) {
+    if (event.target.dataset.price == "acc") {
+      // console.log("virker");
+      allData.sort((a, b) => a.price - b.price);
+    } else {
+      allData.sort((a, b) => b.price - a.price);
+    }
+  } else {
+    if (event.target.dataset.text == "az") {
+      allData.sort((a, b) =>
+        a.productdisplayname.localeCompare(b.productdisplayname, "da"),
+      );
+    } else {
+      allData.sort((a, b) =>
+        b.productdisplayname.localeCompare(a.productdisplayname, "da"),
+      );
+    }
+  }
+
+  showData(allData);
 }
