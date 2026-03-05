@@ -4,6 +4,9 @@ const container = document.querySelector("main");
 
 const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}`;
 
+document.querySelector("h2").textContent = kategori;
+const listContainer = document.querySelector("#productlistContainer");
+
 function getData() {
   fetch(endpoint)
     .then((res) => res.json())
@@ -35,3 +38,30 @@ function showData(json) {
 }
 
 getData();
+
+document
+  .querySelectorAll("button")
+  .forEach((knap) => knap.addEventListener("click", filter));
+
+let allData;
+
+function getData() {
+  fetch(endpoint)
+    .then((response) => response.json())
+    .then((data) => {
+      allData = data;
+      showData(allData);
+    });
+}
+
+function filter(e) {
+  const valgt = e.target.textContent;
+  if (valgt === "All") {
+    console.log(allData);
+    showData(allData);
+  } else {
+    const udsnit = allData.filter((element) => element.gender == valgt);
+    console.log(udsnit);
+    showData(udsnit);
+  }
+}
