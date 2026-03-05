@@ -68,7 +68,7 @@ function filter(e) {
   }
 }
 
-//sorter knapper
+//sorter knap
 document
   .querySelectorAll("#sorter-knap button")
   .forEach((knap) => knap.addEventListener("click", sorter));
